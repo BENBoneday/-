@@ -1,58 +1,42 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-//#include<time.h>
-//#include<string.h>
-//#include<sys/timeb.h>
-//
-//#define MAX 10
-//long getSystemTime()
-//{
-//	struct timeb tb;
-//	ftime(&tb);
-//	return tb.time * 1000 + tb.millitm;
-//}
-//void Print(int arr[], int n)
-//{
-//	int i = 0;
-//	for (i = 0; i < n; i++)
-//	{
-//		printf("%d ", arr[i]);
-//	}
-//	printf("\n");
-//}
-//void InsertSort(int arr[],int length)
-//{
-//	int j;
-//	for (int i = 1; i < length; i++)
-//	{
-//		if (arr[i] < arr[i - 1])
-//		{
-//			int temp = arr[i];
-//			for (j = i - 1; j >= 0 && temp < arr[j]; j--)
-//			{
-//				arr[j + 1] = arr[j];
-//			}
-//			arr[j + 1] = temp;
-//		}
-//	}
-//}
-//int main()
-//{
-//	int arr[MAX];
-//	srand((unsigned int)time(NULL));
-//	for (int i = 0; i < MAX; i++)
-//	{
-//		int randNum = rand() % MAX;
-//		arr[i] = randNum;
-//	}
-//	Print(arr, MAX);
-//	InsertSort(arr,MAX);
-//	Print(arr, MAX);
-//	return 0;
-//}
+void InsertSort(int* a,int n)
+{
+	int i;
+	for (i = 0; i < n - 1; i++)
+	{
+		int end = i;
+		int temp = a[end + 1];
+		while (end >= 0)
+		{
+			if (temp < a[end])
+			{
+				a[end + 1] = a[end];
+				--end;
+			}
+			else break;
+		}
+		a[end + 1] = temp;
+	}
+
+}
+void Print(int* a,int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ",a[i]);
+
+	}
+	printf("\n");
+}
+void Test()
+{
+	int a[] = { 3,6,4,5,8,9,44,6 };
+	InsertSort(a, sizeof(a) / sizeof(int));
+	Print(a, sizeof(a) / sizeof(int));
+}
 int main()
 {
-	int* p, a = 0;
-	printf("%d", a);
+	Test();
 	return 0;
 }
